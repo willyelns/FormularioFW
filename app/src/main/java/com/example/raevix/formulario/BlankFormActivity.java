@@ -1,9 +1,11 @@
 package com.example.raevix.formulario;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -29,6 +31,11 @@ public class BlankFormActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blank_form);
         layout = (LinearLayout) findViewById(R.id.InnerLayout);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setLogo(R.drawable.logo);
+        actionBar.setTitle("New Form");
     }
 
     public void criarCampoNormal(String hint){
@@ -117,6 +124,10 @@ public class BlankFormActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if(id == android.R.id.home){
+            Intent i = new Intent(this, InicioActivity.class);
+            startActivity(i);
+        }
         if (id == R.id.action_cancelar) {
             finish();
         }
