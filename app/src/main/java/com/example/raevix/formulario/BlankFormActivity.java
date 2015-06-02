@@ -3,6 +3,7 @@ package com.example.raevix.formulario;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -30,17 +31,6 @@ public class BlankFormActivity extends Activity {
         layout = (LinearLayout) findViewById(R.id.InnerLayout);
     }
 
-    public void novoCampo(View v){
-        EditText texto = new EditText(this);
-        texto.setHint("Novo Campo");
-        texto.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        layout.addView(texto);
-
-    }
-    public void criarNovoCampo(){
-        exibirDialog();
-    }
     public void criarCampoNormal(String hint){
         EditText texto = new EditText(this);
         texto.setHint(hint);
@@ -80,14 +70,17 @@ public class BlankFormActivity extends Activity {
         confirmar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(tipoNumero.getText().toString() == null || tipoNormal.getText().toString() == null){
-                    Toast.makeText(getApplicationContext(),"O Tipo n\u00e3o foi escolhido",Toast.LENGTH_LONG).show();
+                if(nomeCampo.getText().toString() == null){
+                    nomeCampo.setError("Por favor, digite um nome para o campo.");
                 }
-                if(tipoNumero.getText().toString() != null){
+                if(tipoNumero.isChecked() == false && tipoNormal.isChecked() == false){
+                    Toast.makeText(getApplicationContext(),"Por favor, escolha um tipo",Toast.LENGTH_LONG).show();
+                }
+                if(tipoNumero.isChecked() == true){
                     criarCampoNumero(nomeCampo.getText().toString());
                     dialog.dismiss();
                 }
-                if(tipoNormal.getText().toString() != null){
+                if(tipoNormal.isChecked() == true){
                     criarCampoNormal(nomeCampo.getText().toString());
                     dialog.dismiss();
                 }
@@ -98,6 +91,16 @@ public class BlankFormActivity extends Activity {
         builder.setView(view);
         dialog = builder.create();
         dialog.show();
+    }
+    public void salvarFormulario(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Salvar Formul\u00e1rio");
+        builder.setMessage("Voc\u00ea deseja salvar o formul\u00e1rio?");
+        /*builder.setPositiveButton("Confirmar", DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dial, int id){
+                finish();
+            }
+        });*/
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,10 +121,10 @@ public class BlankFormActivity extends Activity {
             finish();
         }
         if(id == R.id.action_addCampo){
-            criarNovoCampo();
+            exibirDialog();
         }
         if(id == R.id.action_salvar){
-            criarCampoNumero("Numero");
+            //criarCampoNumero("Numero");
            // validarNovoCampo();
         }
 
