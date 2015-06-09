@@ -50,5 +50,6 @@
         android:id="@+id/btnInscricao"
         android:layout_marginTop="52dp"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="abrirInscricao" />
 </RelativeLayout>

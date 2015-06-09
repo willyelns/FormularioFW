@@ -9,6 +9,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".InicioActivity"
+            android:icon="@drawable/logo"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,11 +19,22 @@
         </activity>
         <activity
             android:name=".BlankFormActivity"
+            android:icon="@drawable/logo"
             android:label="@string/title_activity_blank_form" >
         </activity>
         <activity
             android:name=".TesteForm"
+            android:icon="@drawable/logo"
             android:label="@string/title_activity_teste_form" >
+        </activity>
+        <activity
+            android:name=".InscricaoActivity"
+            android:icon="@drawable/logo"
+            android:label="@string/title_activity_inscricao" >
+        </activity>
+        <activity
+            android:name=".InscricaoAlunoActivity"
+            android:label="@string/title_activity_inscricao_aluno" >
         </activity>
     </application>
 

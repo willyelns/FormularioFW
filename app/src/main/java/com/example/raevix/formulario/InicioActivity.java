@@ -19,8 +19,8 @@ public class InicioActivity extends Activity {
         Intent i = new Intent(this,BlankFormActivity.class);
         startActivity(i);
     }
-    public void toTeste(View v){
-        Intent i = new Intent(this,TesteForm.class);
+    public void abrirInscricao(View v){
+        Intent i = new Intent(this,InscricaoAlunoActivity.class);
         startActivity(i);
     }
 
